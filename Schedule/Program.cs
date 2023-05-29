@@ -1,7 +1,11 @@
-﻿internal class Program
+﻿using Schedule;
+using System.ComponentModel.Design;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Presenter presenter = new Presenter();
+        presenter.Start();
     }
 }

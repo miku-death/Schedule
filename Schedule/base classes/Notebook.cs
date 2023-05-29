@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Schedule.Interfaces;
 
 namespace Schedule
 {
     internal class Notebook
     {
         List<Record> records;
+        string name;
+
 
         public List<Record> Records { get { return records; } }
         public int Count { get { return records.Count; } }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
-        public Notebook()
+        public Notebook(string name)
         {
             records = new List<Record>();
+
         }
 
         public override string ToString()

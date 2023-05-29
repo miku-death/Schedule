@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using Schedule.Interfaces;
 
 namespace Schedule
 {
-    internal abstract class Record : ISaveable, ILoadable, IComparable
+    internal abstract class Record : IComparable
     {
         DateTime when;
         string description;
@@ -42,20 +42,6 @@ namespace Schedule
             {
                 return false;
             }
-        }
-
-        // TODO
-        public void Save(ISaveable o)
-        {
-            throw new NotImplementedException();
-        }
-        public void SaveChanges(ISaveable o, string path)
-        {
-            throw new NotImplementedException();
-        }
-        public object Load(string path)
-        {
-            throw new NotImplementedException();
         }
 
         private class DateSortHelper : IComparer<Record>

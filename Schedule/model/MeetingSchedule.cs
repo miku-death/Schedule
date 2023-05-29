@@ -8,7 +8,10 @@ namespace Schedule.model
 {
     internal class MeetingSchedule : Notebook
     {
-        public MeetingSchedule() { }
+        public MeetingSchedule(string name) : base(name)
+        {
+            Name = name;
+        }
 
         public Record Next()
         {
