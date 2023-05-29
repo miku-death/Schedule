@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
+﻿using System.Collections;
 
 namespace Schedule
 {
-    internal abstract class Record
+    internal abstract class Record : ISaveable, ILoadable, IComparable
     {
-        protected DateTime when;
-        protected string description;
+        DateTime when;
+        string description;
 
         public DateTime When
         {
@@ -47,6 +42,40 @@ namespace Schedule
             {
                 return false;
             }
+        }
+
+        // TODO
+        public void Save(ISaveable o)
+        {
+            throw new NotImplementedException();
+        }
+        public void SaveChanges(ISaveable o, string path)
+        {
+            throw new NotImplementedException();
+        }
+        public object Load(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        private class DateSortHelper : IComparer<Record>
+        {
+            public int Compare(Record? x, Record? y)
+            {
+                if (x is null || y is null)
+                    return 0;
+                return x.When.CompareTo(y.When);
+            }
+        }
+        public int CompareTo(object? obj)
+        {
+            if (obj is null)
+                return 1;
+            return when.CompareTo((obj as Record).when);
+        }
+        public static IComparer<Record> SortYearAscending()
+        {
+            return new DateSortHelper();
         }
     }
 }

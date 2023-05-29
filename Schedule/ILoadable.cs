@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Schedule
 {
-    internal interface ILoadable<T>
-        where T : ISaveable
+    internal interface ILoadable
     {
-        public T Load(string path);
+        public object Load(string path);
     }
 }
