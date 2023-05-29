@@ -8,8 +8,7 @@ namespace Schedule.Interfaces
 {
     internal interface FileIntercation
     {
-        public void Save(Notebook n, string path);
-        public void SaveChanges(Notebook n, string path);
-        public void Load(string path);
+        public void Save();
+        public void Load();
     }
 }

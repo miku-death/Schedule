@@ -1,9 +1,4 @@
 ﻿using Schedule.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Schedule
 {
@@ -21,28 +16,24 @@ namespace Schedule
         public void Start()
         {
             Started = true;
-            Console.WriteLine("welcome!");
-            Console.WriteLine("what do you want to do?");
-            Console.WriteLine("1. create notebook");
-            Console.WriteLine("2. load notebook");
-            Console.WriteLine("3. exit");
             int choice = 0;
             while (choice != 3)
             {
+                Console.WriteLine("what do you want to do?");
+                Console.WriteLine("1. create notebook");
+                Console.WriteLine("2. load notebook");
+                Console.WriteLine("3. exit");
                 if (int.TryParse(Console.ReadLine(), out choice))
                 {
-                    switch(choice)
+                    switch (choice)
                     {
                         case 1:
-                            Console.WriteLine("name your notebook");
-                            Presenter.CreateNotebook(Console.ReadLine());
+                            Presenter.CreateNotebook();
                             break;
                         case 2:
-                            Console.WriteLine("enter path to the saved notebook");
-                            Presenter.LoadNotebook(Console.ReadLine());
+                            Console.WriteLine(Presenter.LoadNotebook());
                             break;
                         case 3:
-                            Console.WriteLine("goodbye");
                             break;
                         default:
                             Console.WriteLine("invalid input. try again");
@@ -52,6 +43,7 @@ namespace Schedule
                 else
                     Console.WriteLine("invalid input. try again");
             }
+            SaveNotebook();
         }
 
         public void AddRecord()
@@ -69,9 +61,16 @@ namespace Schedule
                 Presenter.CreateRecord(place, when, description);
                 Console.WriteLine("add record? [any_key / n]");
             }
+        }
 
-            Console.WriteLine("your notebook: ");
-            Presenter.PrintNotebook();
+        public void SaveNotebook()
+        {
+            Console.WriteLine("save to file? [any_key / n]");
+
+            if (Console.ReadLine() != "n")
+            {
+                Presenter.SaveNotebook();
+            }
         }
     }
 }

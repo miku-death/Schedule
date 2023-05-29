@@ -11,5 +11,6 @@ namespace Schedule.Interfaces
         IPresenter Presenter { get; set; }
         public void Start();
         public void AddRecord();
+        public void SaveNotebook();
     }
 }

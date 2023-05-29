@@ -11,9 +11,11 @@ namespace Schedule.Interfaces
         public bool Started { get; set; }
 
         void Start();
-        void CreateNotebook(string name);
-        void LoadNotebook(string path);
+        void CreateNotebook();
+        void SaveNotebook();
+        string LoadNotebook();
 
         void CreateRecord(string place, DateTime when, string description);
+        string PrintNotebook();
     }
 }

@@ -1,9 +1,4 @@
 ﻿using Schedule.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Schedule
 {
@@ -27,15 +22,17 @@ namespace Schedule
             Started = true;
         }
 
-        public void CreateNotebook(string name)
+        public void CreateNotebook()
         {
-            model.CreateNotebook(name);
+            model.CreateNotebook();
             view.AddRecord();
         }
 
-        public void LoadNotebook(string path)
+        public string LoadNotebook()
         {
-            throw new NotImplementedException();
+            model.LoadNotebookFromFile();
+            return model.ReadableNotebook();
+
         }
 
         public void CreateRecord(string place, DateTime when, string description)
@@ -45,7 +42,12 @@ namespace Schedule
 
         public string PrintNotebook()
         {
-            return model.SerializeNotebook();
+            return model.ReadableNotebook();
+        }
+
+        public void SaveNotebook()
+        {
+            model.SaveNotebook();
         }
     }
 }

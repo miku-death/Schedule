@@ -1,25 +1,16 @@
-﻿using Schedule.Interfaces;
-
-namespace Schedule
+﻿namespace Schedule
 {
-    internal class Notebook
+    internal class Notebook<T>
+        where T : Record
     {
-        List<Record> records;
-        string name;
+        List<T> records;
 
-
-        public List<Record> Records { get { return records; } }
+        public List<T> Records { get { return records; } }
         public int Count { get { return records.Count; } }
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
 
-        public Notebook(string name)
+        public Notebook()
         {
-            records = new List<Record>();
-
+            records = new List<T>();
         }
 
         public override string ToString()
@@ -30,19 +21,19 @@ namespace Schedule
             return result;
         }
 
-        public void Add(Record record)
+        public void Add(T record)
         {
             records.Add(record);
         }
-        public void Insert(int index, Record record)
+        public void Insert(int index, T record)
         {
             records.Insert(index, record);
         }
-        public Record GetRecord(int index)
+        public T GetRecord(int index)
         {
             return records[index];
         }
-        public bool Exists(Record record)
+        public bool Exists(T record)
         {
             return records.Exists(f => f.Equals(record));
         }
@@ -70,11 +61,11 @@ namespace Schedule
                 return false;
             }
         }
-        public Record Pop()
+        public T Pop()
         {
             if (Count > 0)
             {
-                Record record = records[records.Count - 1];
+                T record = records[records.Count - 1];
                 this.Delete();
                 return record;
             }

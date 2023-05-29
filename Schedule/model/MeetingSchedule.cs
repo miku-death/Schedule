@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Schedule.model
+﻿namespace Schedule.model
 {
-    internal class MeetingSchedule : Notebook
+    internal class MeetingSchedule : Notebook<Appointment>
     {
-        public MeetingSchedule(string name) : base(name)
+        public MeetingSchedule() : base()
         {
-            Name = name;
         }
 
-        public Record Next()
+        public Record? Next()
         {
             SortByDate();
             for (int i = 0; i < Count; i++)

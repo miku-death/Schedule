@@ -22,5 +22,10 @@ namespace Schedule.model
             Description = description;
             Place = place;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + " @ " + Place;
+        }
     }
 }
