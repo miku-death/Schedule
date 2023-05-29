@@ -78,7 +78,7 @@ namespace Schedule
             }
             else throw new ArgumentOutOfRangeException();
         }
-        public void Sort()
+        public void SortByDate()
         {
             records.Sort(Record.SortYearAscending());
         }
