@@ -42,5 +42,10 @@ namespace Schedule
         {
             model.CreateRecord(place, when, description);
         }
+
+        public string PrintNotebook()
+        {
+            return model.SerializeNotebook();
+        }
     }
 }

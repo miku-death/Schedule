@@ -56,13 +56,22 @@ namespace Schedule
 
         public void AddRecord()
         {
-            Console.WriteLine("where?");
-            string place = Console.ReadLine();
-            Console.WriteLine("when?");
-            DateTime when = Convert.ToDateTime(Console.ReadLine());
-            Console.WriteLine("description?");
-            string description = Console.ReadLine();
-            Presenter.CreateRecord(place, when, description);
+            Console.WriteLine("add record? [any_key / n]");
+
+            while (Console.ReadLine() != "n")
+            {
+                Console.WriteLine("where?");
+                string place = Console.ReadLine();
+                Console.WriteLine("when?");
+                DateTime when = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("description?");
+                string description = Console.ReadLine();
+                Presenter.CreateRecord(place, when, description);
+                Console.WriteLine("add record? [any_key / n]");
+            }
+
+            Console.WriteLine("your notebook: ");
+            Presenter.PrintNotebook();
         }
     }
 }

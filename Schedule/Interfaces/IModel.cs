@@ -15,6 +15,7 @@ namespace Schedule.Interfaces
         void SaveNotebook(Notebook notebook);
         void SaveChangesToNotebook(Notebook notebook, string path);
 
-        public void CreateRecord(string place, DateTime when, string description);
+        void CreateRecord(string place, DateTime when, string description);
+        string SerializeNotebook();
     }
 }
